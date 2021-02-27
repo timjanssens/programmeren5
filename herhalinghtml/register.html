@@ -1,12 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Tim's website">
+    <meta name="keywords" content="testing, forms, PHP, CSS3, HTML5 ">
+    <meta name="author" content="Tim Janssens">
+    <meta name="date" content="20210225">
+    <title>Form document</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+
 </head>
+
 <body>
-    
+
+
+    <p>Vul het registratieformulier in. Velden met een <span class="error">*</span> zijn verplicht.</p>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Accountgegevens</legend>
+            <div class="row">
+                <div class="col-25">
+                    <label for="firstname">Voornaam <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="firstname" name="firstname" autofocus required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lastname">Familienaam <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="mail">Email adres <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <input type="email" id="mail" name="mail" placeholder="name@example.com" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="password1">Paswoord <span class="error">*</span> </label>
+                </div>
+                <div class="col-75">
+                    <input type="password" id="password1" name="password1" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="password2">Bevestigpaswoord <span class="error">*</span>
+                        <br> min 8 karakters, 1 cijfer 1hoofdletter</label>
+                </div>
+                <div class="col-75">
+                    <input type="password2" id="password2" name="password2" required>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Addresgegevens</legend>
+            <div class="row">
+                <div class="col-25">
+                    <label for="address1">Adres 1 <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="address1" name="address1" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="address2">Adres 2 </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="address2" name="address2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="postalcode">Postcode <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="postalcode" name="postalcode" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="city">Stad <span class="error">*</span> </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="city" name="city" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="countryCode">Kies een land <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <select id="countryCode" name="countryCode">
+                        <option value="BE">Belgie</option>
+                        <option value="DE">Duitsland</option>
+                        <option value="FR">Frankrijk</option>
+                        <option value="LU">Luxemburg</option>
+                        <option value="NL">Nederland</option>
+                        <option value="UK">Verenigd Koninkrijk</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Persoonlijke gegevens</legend>
+            <div class="row">
+                <div class="col-25">
+                    <label for="gsm">Gsm</label>
+                </div>
+                <div class="col-75">
+                    <input type="tel" id="gsm" name="gsm">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="birtday">Geboortedatum <span class="error">*</span></label>
+                </div>
+                <div class="col-75">
+                    <input type="date" id="birtday" name="birtday">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="satisfied">Hoe tevreden ben je?</label>
+                </div>
+                <div class="col-75">
+                    <input type="range" id="satisfied" name="satisfied">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <input type="radio" name="sex" value="man" id="male">
+                </div>
+                <div class="col-75">
+                    <label for="male">Man</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <input type="radio" name="sex" value="vrouw" id="female">
+                </div>
+                <div class="col-75">
+                    <label for="female">Vrouw</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <input type="radio" name="sex" value="noch man noch vrouw" id="unknown" checked>
+                </div>
+                <div class="col-75">
+                    <label for="unknown">Onbekend</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="faculty">Kies een opleiding</label>
+                </div>
+                <div class="col-75">
+                    <select id="faculty" name="faculty">
+                        <option value="PRO">Graduaat Programmeren</option>
+                        <option value="SNB">Graduaat SNB</option>
+                        <option value="IOT">Graduaat IOT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="course">Kies een vak</label>
+                </div>
+                <div class="col-75">
+                    <select id="course" name="course" multiple>
+                        <option value="Pro">Programmeren</option>
+                        <option value="Webtech">Webtechnologie</option>
+                        <option value="CMSIntro">CMS Intro</option>
+                        <option value="CMSDev">CMS Development</option>
+                        <option value="OO">OO Programmeren</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+            <div class="col-25">
+                <input type="submit" value="Verzenden">
+            </div>
+        </div>
+
+    </form>
+    <script src="./script/script.js">
+    </script>
+
 </body>
+
 </html>
