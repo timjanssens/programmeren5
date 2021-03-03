@@ -1,22 +1,49 @@
+var scrollDelay = 2000;
+var marqueeSpeed = 1;
+var timer;
 
-window.setInterval(changeTrafficLight, 2000);
+var scrollArea = document.querySelector('#scroll-area');
+var marquee = document.querySelector('#marquee');
+var scrollPosition = 0;
 
-var pos = 1;
-function changeTrafficLight() {
-  let block1 = document.querySelector('#block1');
-  let block2 = document.querySelector('#block2');
-  let block3 = document.querySelector('#block3');
-  if (pos == 1) {
-    block1.style.backgroundColor = 'gray';
-    block2.style.backgroundColor = 'orange';
-    pos = 2;
-  } else if (pos == 2) {
-     block2.style.backgroundColor = 'gray';
-     block3.style.backgroundColor = 'green';
-    pos = 3;   
+var scrolling = function () {
+  if (scrollPosition + scrollArea.offsetHeight <= 0) {
+    scrollPosition = marquee.offsetHeight;
   } else {
-     block1.style.backgroundColor = 'red';
-     block3.style.backgroundColor = 'gray';
-     pos = 1;
+    scrollPosition = scrollPosition - marqueeSpeed;
+  }
+  scrollArea.style.top = scrollPosition + "px";
+}
+
+var startScrolling = function () {
+  timer = setInterval(scrolling, 30);
+}
+
+var initializeMarquee = function () {
+  scrollArea.style.top = 0;
+  setTimeout(startScrolling, scrollDelay);
+}
+
+var pauseMarquee = function(){
+  if(marqueeSpeed > 0){
+    marqueeSpeed = 0;
+  }
+  else{
+    marqueeSpeed = 1
   }
 }
+
+var speedUpMarquee = function(){
+  if (marqueeSpeed <= 3){
+    marqueeSpeed++;
+  }
+}
+
+var slowDownMarquee = function(){
+  if(marqueeSpeed > 1){
+    marqueeSpeed--;
+  }  
+}
+
+window.onload = initializeMarquee;
+
