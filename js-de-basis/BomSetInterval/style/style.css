@@ -1,0 +1,20 @@
+
+#block1 {
+  height: 4em;
+  width: 4em;
+  background-color: red;
+  border-radius: 50%;
+}
+
+#block2 {
+  height: 4em;
+  width: 4em;
+  background-color: gray;
+   border-radius: 50%;
+}
+#block3 {
+  height: 4em;
+  width: 4em;
+  background-color: gray;
+   border-radius: 50%;
+}
