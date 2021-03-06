@@ -21,8 +21,8 @@ mijnBasisKaart.addTo(mijnKaart)
 // hoe groter het getal, hoe gedetailleerder
 mijnKaart.setView([51.2191, 4.40111], 12);
 
-// const eersteMarkering = L.marker([ 51.28256053326298, 4.402915267575786], {icon: schoolIcon}).bindPopup(
-// const tweedeMarkering = L.marker([51.19420966668424, 4.4335459741221666], {icon: schoolIcon}).addTo(mijnKaart);
+//  const eersteMarkering = L.marker([ 51.28256053326298, 4.402915267575786], {icon: schoolIcon}).addTo(mijnKaart);
+//  const tweedeMarkering = L.marker([51.19420966668424, 4.4335459741221666], {icon: schoolIcon}).addTo(mijnKaart);
 
 
 const request = new XMLHttpRequest()
@@ -30,13 +30,17 @@ request.open('GET', 'https://opendata.arcgis.com/datasets/0047052fbbe94040bfe0b9
 
 request.onload = function () {
   // Begin accessing JSON data here
-  const data = JSON.parse(this.response)
+  const geoJSON = JSON.parse(this.response)
 
-  console.log(data);
+  console.log(geoJSON);
 
-  L.geoJSON(data).addTo(mijnKaart);
-
-
+  L.geoJSON(geoJSON)
+  .bindPopup(function (layer){
+     return "Naam: " + layer.feature.properties.naam + "</br>" 
+     + "Straat + nummer: " + layer.feature.properties.straat + " " + layer.feature.properties.huisnummer + "</br>"
+     + "District: " + layer.feature.properties.district
+  })
+  .addTo(mijnKaart);
 
 }
 
