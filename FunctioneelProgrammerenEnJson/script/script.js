@@ -34,13 +34,19 @@ request.onload = function () {
 
   console.log(geoJSON);
 
-  L.geoJSON(geoJSON)
-  .bindPopup(function (layer){
-     return "Naam: " + layer.feature.properties.naam + "</br>" 
-     + "Straat + nummer: " + layer.feature.properties.straat + " " + layer.feature.properties.huisnummer + "</br>"
-     + "District: " + layer.feature.properties.district
+  L.geoJSON(geoJSON,{filter: distirctFilter})
+  .bindPopup(function (school){
+     return "Naam: " + school.feature.properties.naam + "</br>" 
+     + "Straat + nummer: " + school.feature.properties.straat + " " + school.feature.properties.huisnummer + "</br>"
+     + "District: " + school.feature.properties.district
   })
+  .openPopup()
   .addTo(mijnKaart);
+
+  function distirctFilter(school){
+    if (school.properties.district === "Wilrijk") 
+      return true;
+  }
 
 }
 
