@@ -1,42 +1,50 @@
-// declare the global variables
-var timer; // reference to window.setInterval timer
-var car; // reference to old car image
-var banner; // reference to Xrox Car Co banner image
-var carLeft;
+var scrollDelay = 2000;
+var marqueeSpeed = 1;
+var timer;
 
- window.onload = function() {
-            window.setTimeout(startAnimation, 1000);
-        }
+var scrollArea = document.querySelector('#scroll-area');
+var marquee = document.querySelector('#marquee');
+var scrollPosition = 0;
 
-var startAnimation = function() {
-  window.status = 'Welkom op inantwerpen.com';
-  car = document.getElementById('car');
-  car.style.visibility = 'hidden';
-  car = document.getElementById('car2');
- 
-  // swap to the second car image (no towrope)
-  // car.src = document.getElementById('car2').src;
-  carLeft = 0;
-  banner = document.getElementById('banner');
-  bannerLeft = 0;
-  // start de interval timer
-  // 1 seconde = 1000
-  timer = window.setInterval(moveImages, 10);
+var scrolling = function () {
+  if (scrollPosition + scrollArea.offsetHeight <= 0) {
+    scrollPosition = marquee.offsetHeight;
+  } else {
+     
+    scrollPosition = scrollPosition - marqueeSpeed;
+  }
+  scrollArea.style.top = scrollPosition + "px";
 }
 
-var moveImages = function() {
-  carLeft += 2;
-  car.style.left = carLeft + 'px';
-  banner.style.left = (carLeft - 370) + 'px';
+var startScrolling = function () {
+  timer = setInterval(scrolling, 30);
+}
 
-  // als het autootje het einde van het scherm bereikt heeft
-  // wordt het onzichtbaar gemaakt en de banner zichtbaar
-  if (carLeft >= window.innerWidth) {
-    window.clearInterval(timer); // so stop timer
-    car.style.visibility = 'hidden'; // and hide it
-    // display the slogan image
-    document.getElementById('force').style.visibility = 'visible';
-   car = document.getElementById('car');
-   car.style.visibility = 'visible';
+var initializeMarquee = function () {
+  scrollArea.style.top = 0;
+  setTimeout(startScrolling, scrollDelay);
+}
+
+var pauseMarquee = function(){
+  if(marqueeSpeed > 0){
+    marqueeSpeed = 0;
+  }
+  else{
+    marqueeSpeed = 1
+  }
+} 
+
+
+var speedUpMarquee = function(){
+  if (marqueeSpeed <= 3){
+    marqueeSpeed++;
   }
 }
+
+var slowDownMarquee = function(){
+  if(marqueeSpeed > 1){
+    marqueeSpeed--;
+  }  
+}
+
+window.onload = initializeMarquee;
