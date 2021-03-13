@@ -44,7 +44,7 @@ request.onload = function () {
   .addTo(mijnKaart);
 
   function distirctFilter(school){
-    if (school.properties.district === "Wilrijk") 
+    if (school.properties.district === "Antwerpen") 
       return true;
   }
 
