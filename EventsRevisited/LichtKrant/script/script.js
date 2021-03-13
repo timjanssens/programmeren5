@@ -47,4 +47,15 @@ var slowDownMarquee = function(){
   }  
 }
 
-window.onload = initializeMarquee;
+// window.onload = initializeMarquee;
+window.addEventListener("load", initializeMarquee);
+
+// onclick="speedUpMarquee()" 
+document.querySelector("#fast").addEventListener("click", speedUpMarquee);
+
+// onclick="slowDownMarquee()"
+document.querySelector("#slow").addEventListener("click", slowDownMarquee);
+
+// onmouseover="pauseMarque();" onmouseout="pauseMarque()"
+document.querySelector('#marquee').addEventListener("mouseover", pauseMarquee);
+document.querySelector('#marquee').addEventListener("mouseout", pauseMarquee);
