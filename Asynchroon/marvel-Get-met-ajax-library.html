@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax library gebruiken om toegang te krijgen tot Marvel API's</title>
+    <script type="text/javascript" src="./script/ajax.js"></script>
+    <script>
+        window.onload = function() {
+            var ajax = new Ajax();
+            ajax.getRequest  ('https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=cfc3e03eb8e709428113bbc27f142e67', 
+                showMarvelCharacters);
+        }
+
+        ('https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=cfc3e03eb8e709428113bbc27f142e67', 
+                showMarvelCharacters)
+
+        function showMarvelCharacters(response) {
+            // convert JSON to array
+            // we zijn alleen geïnteresseerd in de personnages
+            var characters = JSON.parse(response).data.results;
+            var table = document.createElement('table');
+            characters.map(function(character) {
+                var row = document.createElement('tr');
+                var name = document.createElement('td');
+                var textContent = document.createTextNode(character.name);
+                name.appendChild(textContent);
+                row.appendChild(name);
+                table.appendChild(row);
+            });
+            document.body.appendChild(table);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
