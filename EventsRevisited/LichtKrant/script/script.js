@@ -51,7 +51,10 @@ var slowDownMarquee = function(){
 window.addEventListener("load", initializeMarquee);
 
 // onclick="speedUpMarquee()" 
-document.querySelector("#fast").addEventListener("click", speedUpMarquee);
+document.querySelector("#fast").addEventListener("click", function(){
+  if (marqueeSpeed <= 3){
+    marqueeSpeed++;
+  }});
 
 // onclick="slowDownMarquee()"
 document.querySelector("#slow").addEventListener("click", slowDownMarquee);

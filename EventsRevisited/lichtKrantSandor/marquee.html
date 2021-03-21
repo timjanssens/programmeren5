@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-bottom: 1em;
+            text-align: right;
+            width: 250px;
+        }
+
+        #marquee {
+            position: relative;
+            width: 250px;
+            height: 200px;
+            background-color: yellow;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        #marquee #scroll-area {
+            position: absolute;
+            top: 0;
+            padding: 5px;
+        }
+
+        .command-bar {
+            margin: 1em 0 0 0;
+            text-align: center;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>De gazet</h1>
+    <div id="marquee">  
+        <div id="scroll-area">
+            Schmitz became the first woman to win the Nurburgring 24 Hours in 1996, taking two victories in the historic sportscar race before enjoying a long career 
+            intrinsically linked to the circuit, as well as becoming known for her features on BBC programme Top Gear. 
+            In a statement issued by Frikadelli Racing - the team she founded with her husband Klaus Abbelen - it was announced that Schmitz had lost her long battle against cancer 
+            and died at the age of 51 on Tuesday. 
+            “Sabine Schmitz (14.5.1969 – 16.3.2021) passed away yesterday (Tuesday) after her brave fight against cancer,” the team wrote on social media.
+            “She was 51 years old. Klaus Abbelen and all relatives and friends are deeply saddened by the immeasurable loss.” 
+            Schmitz made history at the Nurburgring as the first female overall winner of the 24-hour race in 1996 before taking a second victory the following year. 
+            She broke further ground in 1998, when she become the first woman to win the VLN Endurance Championship title in Germany.
+        </div>
+    </div>
+    <div class="command-bar">
+        <button id="speedUp" type="button">Versnellen</button>
+        <button id="slowDown" type="button">Vertragen</button>
+    </div>
+
+    <script src="./script/marquee.js" type="text/javascript"></script>
+    
+</body>
+</html>
