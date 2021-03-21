@@ -44,3 +44,18 @@ th span:hover {
     color: white;
     background-color: #630;
 }
+
+.asc::after {
+    content: "\0020\0020\0020\2191";
+}
+
+.desc::after {
+    content: "\0020\0020\0020\2193";
+}
+
+table thead th:hover {
+    cursor: hand;
+    cursor: pointer;
+    color: white;
+    background-color: #630;
+}
