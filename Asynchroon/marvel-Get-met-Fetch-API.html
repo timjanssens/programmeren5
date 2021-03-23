@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leren werken met Marvel API fetch</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        fetch('https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=cfc3e03eb8e709428113bbc27f142e67')
+            .then((response) => {
+                return response.json()
+            })
+            .then((object) => {
+                // Work with JSON data here
+                // console.log(object);
+
+                // console.log(object.data.results)
+                
+                var characters = object.data.results;
+                // console.log(characters);
+          
+                var table = document.createElement('table');
+          
+                characters.map(function (character) {
+                var row = document.createElement('tr');
+                var name = document.createElement('td');
+                var textContent = document.createTextNode(character.name);
+                var imagecol = document.createElement('td');
+                var image = document.createElement('img');
+                image.src =  character.thumbnail.path + '/portrait_uncanny' + '.' + character.thumbnail.extension;
+                // image.style = "height: 150px;"
+                imagecol.appendChild(image);
+                row.appendChild(imagecol);
+                name.appendChild(textContent);
+                row.appendChild(name);
+                table.appendChild(row);
+            });
+            document.body.appendChild(table);
+
+            })
+            .catch((err) => {
+                // Do something for an error here
+                console.log("error");
+            })
+
+
+
+
+
+
+        // var loadMarvelCharacters = function (that) {
+        //     var ajax;
+        //     if (window.XMLHttpRequest) {
+        //         ajax = new XMLHttpRequest();
+        //     } else {
+        //         // code for older browsers
+        //         ajax = new ActiveXObject("Microsoft.XMLHTTP");
+        //     }
+
+        //     // callback functie
+        //     ajax.onreadystatechange = function () {
+        //         // server sent response and
+        //         // OK 200 The request was fulfilled.
+        //         if (ajax.readyState == 4 && ajax.status == 200) {
+        //             // we maken een tabel element
+        //             showMarvelCharacters(this.responseText);
+        //         }
+        //     };
+        //     ajax.open("GET",
+        //         "https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=cfc3e03eb8e709428113bbc27f142e67",
+        //         true);
+        //     ajax.send();
+
+
+        // }
+
+
+        // function showMarvelCharacters(response) {
+        //     // convert JSON to array
+        //     // we zijn alleen geïnteresseerd in de personnages
+            // var characters = JSON.parse(response).data.results;
+            // console.log(characters);
+            // var table = document.createElement('table');
+            // characters.map(function (character) {
+            //     var row = document.createElement('tr');
+            //     var name = document.createElement('td');
+            //     var textContent = document.createTextNode(character.name);
+            //     var imagecol = document.createElement('td');
+            //     var image = document.createElement('img');
+            //     image.src =  character.thumbnail.path + '/portrait_uncanny' + '.' + character.thumbnail.extension;
+            //     // image.style = "height: 150px;"
+            //     imagecol.appendChild(image);
+            //     row.appendChild(imagecol);
+            //     name.appendChild(textContent);
+            //     row.appendChild(name);
+            //     table.appendChild(row);
+            // });
+            // document.body.appendChild(table);
+        // }
+
+
+
+
+
+        // window.addEventListener('load', loadMarvelCharacters);
+    </script>
+
+
+</body>
+
+</html>
