@@ -13,18 +13,20 @@
 
 
     <script>
+
+        
         fetch('https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=cfc3e03eb8e709428113bbc27f142e67')
             .then((response) => {
                 return response.json()
             })
             .then((object) => {
                 // Work with JSON data here
-                // console.log(object);
+                console.log(object);
 
                 // console.log(object.data.results)
                 
                 var characters = object.data.results;
-                // console.log(characters);
+                //  console.log(characters);
           
                 var table = document.createElement('table');
           
