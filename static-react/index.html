@@ -12,54 +12,12 @@
     <script>
         let welcome = React.createElement('h1', { style: { color: "red" } }, `Beginnen met React`)
 
-        // we gaan veel keer createElement moeten gebruiken
-        // we maken een afkorting
-        const e = React.createElement;
-        const marvelListStyle = {
-            color: 'green',
-            display: 'flex'
-        };
-        const marvelItemStyle = {
-            color: 'white',
-            backgroundColor: 'red',
-            textAlign: 'center',
-            width: '15em',
-            fontSize: '2em;',
-            fontFamily: 'Arial',
-            paddingTop: '0.5em'
-        };
-        const marvelImageStyle = {
-            color: 'blue',
-            width: '15em',
-            paddingTop: '0.5em' 
-        };
-        let marvel = e('div', null,
-        e('h1', { style: { color: "red" } }, `Marvel Personnages`),
-        e('div', { style: marvelListStyle },
-        e('div', { style: marvelItemStyle }, 'Avengers', 
-        e('img', {src: 'http://i.annihil.us/u/prod/marvel/i/mg/0/03/523219b086a17.jpg', 
-        style: marvelImageStyle})),
-        e('div', { style: marvelItemStyle }, 'Hulk', 
-        e('img', {src: 'http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg', 
-        style: marvelImageStyle})),
-        e('div', { style: marvelItemStyle }, 'Spider-Man', 
-        e('img', {src: 'http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg', 
-        style: marvelImageStyle})),
-        e('div', { style: marvelItemStyle }, 'Spider-Girl', 
-        e('img', {src: 'http://i.annihil.us/u/prod/marvel/i/mg/1/70/4c003adccbe4f.jpg', 
-        style: marvelImageStyle})),
-        e('div', { style: marvelItemStyle }, 'X-Man', 
-        e('img', {src: 'http://i.annihil.us/u/prod/marvel/i/mg/d/10/535febd73f84f.jpg', 
-        style: marvelImageStyle}))
-        )
-        );
         </script>
 </head>
 <body>
     <div id="root"></div>
     <script>
-        ReactDOM.render(marvel, document.querySelector('#root'))
-        // ReactDOM.render(welcome, document.querySelector('#root'))
+        ReactDOM.render(welcome, document.querySelector('#root'))
         </script>
 </body>
 </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snel starten met React</title>
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // we gaan veel keer createElement moeten gebruiken
+        // we maken een afkorting
+        const e = React.createElement;
+        const marvelListStyle = {
+            color: 'green',
+            display: 'flex',
+            flexWrap: 'wrap'
+        };
+        const marvelItemStyle = {
+            color: 'white',
+            backgroundColor: 'red',
+            textAlign: 'center',
+            width: '10em',
+            fontSize: '2em',
+            fontFamily: 'Arial',
+            paddingTop: '0.5em'
+        };
+        const marvelImageStyle = {
+            color: 'blue',
+            width: '10em',
+            paddingTop: '0.5em'
+        };
+        const marvel = (
+            <div>
+                <h1>Marvel Personnages</h1>
+                <div style={marvelListStyle}>
+                    <div style={marvelItemStyle}>
+                        Avengers
+                        <img src='http://i.annihil.us/u/prod/marvel/i/mg/0/03/523219b086a17.jpg'
+                            style={marvelImageStyle} alt="foto van Avengers" />
+                    </div>
+                    <div style={marvelItemStyle}>
+                        Hulk
+                        <img src='http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg'
+                            style={marvelImageStyle} alt="foto van de Hulk" />
+                    </div>
+                    <div style={marvelItemStyle}>
+                        Spider-Man
+                        <img src='http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg'
+                            style={marvelImageStyle} alt="foto van Spider-Man" />
+                    </div>
+                    <div style={marvelItemStyle}>
+                        Spider-Girl
+                        <img src='http://i.annihil.us/u/prod/marvel/i/mg/1/70/4c003adccbe4f.jpg'
+                            style={marvelImageStyle} alt="foto van Spider-Girl" /></div>
+                    <div style={marvelItemStyle}>
+                        X-Man
+                        <img src='http://i.annihil.us/u/prod/marvel/i/mg/d/10/535febd73f84f.jpg'
+                            style={marvelImageStyle} alt="foto van X-Man" />
+                    </div>
+                </div>
+            </div>
+        );
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        ReactDOM.render(marvel, document.querySelector('#root'))
+    </script>
+</body>
+</html>
