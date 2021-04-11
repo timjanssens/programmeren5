@@ -18,7 +18,7 @@ function showDescription(character) {
     .name(character)
     .get(function(err, resp) {
       if (err) { 
-        return "Error: ", err
+        return "Error: ", err;
        }
       else {
          return resp[0].description;
