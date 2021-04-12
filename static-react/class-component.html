@@ -1,0 +1,94 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snel starten met React</title>
+    <!-- Note: when deploying, replace "development.js" wi="textth "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="js/marvel.js"></script>
+    <script type="text/babel">
+        // object met de gegevens van de Marvelpersonnages
+        const MarvelCharacters = [
+            {
+                name: 'Avengers',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/0/03/523219b086a17.jpg'
+            },
+            {
+                name: 'Hulk',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg'
+            },
+            {
+                name: 'Spider-Man',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg'
+            },
+            {
+                name: 'Spider-Girl',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/1/70/4c003adccbe4f.jpg'
+            },
+            {
+                name: 'X-Man',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/d/10/535febd73f84f.jpg'
+            }
+        ]
+
+        const FarahChoiceMarvelCharacters = [
+    {
+        name: 'Agent Brand',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/4/60/52695285d6e7e.jpg'
+    },
+    {
+        name: 'Anita Blake',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/2/a0/4c0038fa14452.jpg'
+    },
+    {
+        name: 'Butterfly',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/8/00/4c0030b5dbc50.jpg'
+    },
+    {
+        name: 'Spider-Girl',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/1/70/4c003adccbe4f.jpg'
+    },
+    {
+        name: 'Lyja',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/3/40/4c003594c52e8.jpg'
+    }
+]     
+   const TimChoiceMarvelCharacters = [
+    {
+        name: 'Omega the Unknow',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/f/10/4ce5a4e4cd15d.jpg'
+    },
+    {
+        name: 'Old Lace',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/8/c0/4c00359a2be7b.jpg'
+    },
+    {
+        name: 'Unus',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/6/00/4c003a847f5d2.jpg'
+    },
+    {
+        name: "U-Go Girl",
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/8/a0/4c003a91d4fe1.jpg'
+    },
+    {
+        name: 'Ultimate Spider-Man',
+        imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/2/50/5232171a451bb.jpg'
+    }
+]
+    </script>
+</head>
+<body>
+    <div id="john"></div>
+    <div id="farah"></div>
+    <div id="tim"></div>
+
+
+    <script type="text/babel">
+        ReactDOM.render(<Marvel list={MarvelCharacters} heading="John's keuze" />, 
+            document.querySelector('#john'))
+        ReactDOM.render(<Marvel list={FarahChoiceMarvelCharacters} heading="Farah's keuze" />, 
+            document.querySelector('#farah'))   
+        ReactDOM.render(<Marvel list={TimChoiceMarvelCharacters} heading="Tim's keuze" />, 
+                   document.querySelector('#tim'))    </script>
+</body>
+</html>

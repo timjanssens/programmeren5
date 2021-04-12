@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snel starten met React</title>
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // object met de gegevens van de Marvelpersonnages
+        const MarvelCharacters = [
+            {
+                name: 'Avengers',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/0/03/523219b086a17.jpg'
+            },
+            {
+                name: 'Hulk',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg'
+            },
+            {
+                name: 'Spider-Man',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg'
+            },
+            {
+                name: 'Spider-Girl',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/1/70/4c003adccbe4f.jpg'
+            },
+            {
+                name: 'X-Man',
+                imageUrl: 'http://i.annihil.us/u/prod/marvel/i/mg/d/10/535febd73f84f.jpg'
+            }
+        ]
+
+        const marvelCharacterStyle = {
+            list: {
+                color: 'green',
+                display: 'flex',
+                flexWrap: 'wrap'
+            },
+            tile: {
+                color: 'white',
+                backgroundColor: 'red',
+                textAlign: 'center',
+                width: '10em',
+                fontSize: '2em',
+                fontFamily: 'Arial',
+                paddingTop: '0.5em'
+            },
+            image: {
+                color: 'blue',
+                width: '10em',
+                paddingTop: '0.5em'
+            }
+        };
+        function MarvelCharacter(props) {
+            return (
+                <div style={marvelCharacterStyle.tile}>
+                    {props.name}
+                    <img src={props.imageUrl}
+                    style={marvelCharacterStyle.image} alt={"foto van " + props.name} />
+                </div>
+            );
+        }
+        const marvel = (
+            <div>
+                <h1>Marvel Personnages</h1>
+                <div style={marvelCharacterStyle.list}>
+                    {MarvelCharacters.map(element => MarvelCharacter(element))}
+                </div>
+            </div>
+        );
+    </script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        ReactDOM.render(marvel, document.querySelector('#root'))
+    </script>
+</body>
+
+</html>
