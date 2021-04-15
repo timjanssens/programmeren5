@@ -36,6 +36,7 @@ class Marvel extends React.Component {
                 <h1>{this.props.heading}</h1>
                 <div style={this.marvelCharacterStyle.list}>
                     {this.props.list.map(element => this.MarvelCharacter(element))}
+                                   
                 </div>
             </div>
         );
