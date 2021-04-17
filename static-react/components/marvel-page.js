@@ -13,20 +13,25 @@ class Marvel extends React.Component {
             width: '10em',
             fontSize: '2em',
             fontFamily: 'Arial',
-            paddingTop: '0.5em'
+            paddingTop: '0.5em',
+            padding: '20px'
+
         },
         image: {
             color: 'blue',
             width: '10em',
-            paddingTop: '0.5em'
+            paddingTop: '0.5em',
+            height: "450px"
         }
     };
 
     MarvelCharacter(props) {
-        return (<div style={this.marvelCharacterStyle.tile} key={props.name}>
+        return (
+        <div style={this.marvelCharacterStyle.tile} key={props.name}>
             {props.name}
             <img src={props.imageUrl}
-                style={this.marvelCharacterStyle.image} alt={"foto van " + props.name} />
+                style={this.marvelCharacterStyle.image} alt={"foto van " + props.name} />              
+            <LikeButton />
         </div>);
     }
 

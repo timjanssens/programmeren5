@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel" src="./components/marvel-page.js"></script>
+    <script type="text/babel" src="./components/like-panel.js"></script>
     <script type="text/babel">
         // object met de gegevens van de Marvelpersonnages
         const MarvelCharacters = [
@@ -82,13 +83,14 @@
     <div id="farah"></div>
     <div id="tim"></div>
 
-
     <script type="text/babel">
         ReactDOM.render(<Marvel list={MarvelCharacters} heading="John's keuze" />, 
             document.querySelector('#john'))
         ReactDOM.render(<Marvel list={FarahChoiceMarvelCharacters} heading="Farah's keuze" />, 
             document.querySelector('#farah'))   
         ReactDOM.render(<Marvel list={TimChoiceMarvelCharacters} heading="Tim's keuze" />, 
-                   document.querySelector('#tim'))    </script>
+                   document.querySelector('#tim'))   
+    </script>
+
 </body>
 </html>
