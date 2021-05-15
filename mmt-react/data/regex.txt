@@ -1,0 +1,8 @@
+<section id="       {\n\tkey : '
+">\n    <h1>        ',\n\tname : '
+</h1>\n<figure>\n<img src="images/small/        ',\n\tthumbnail : '
+" />\n    <figcaption>(.*)\n</figure>\n<ul>\n<li>Type:      ', \n\ttype :
+
+</li>\n</ul>\n</section>        '\n},
+
+type        comment : '',\n\ttype

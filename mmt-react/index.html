@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="js/helpers.js"></script>
+    <script type="text/babel" src="js/ui-controls.js"></script>
+    <script type="text/babel" src="js/ui-article.js"></script>
+    <link crossorigin="" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        rel="stylesheet" />
+    <script crossorigin=""
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <title>Moe maar tevreden</title>
+
+
+</head>
+
+<body>
+    <header id="header"></header>
+    <div id="root"></div>
+    <script type="text/babel">
+        const url = 'data/vaccinataCentra.json';
+        const myRequest = new Request(url);
+        fetch(myRequest)
+            .then(response => response.json())
+            .then(data => {
+                ReactDOM.render(<ArticleHeader title={data.title} image={data.logoUrl} />,
+                    document.querySelector('#header'));
+                ReactDOM.render(<ArticleApp article={data.vaccinatiecentra} />,
+                    document.querySelector('#root'));
+            })
+            .catch(response => alert("Kan JSON bestand niet openen."));
+ 
+    </script>
+</body>
+
+</html>
