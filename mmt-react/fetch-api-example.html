@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moe maar tevreden</title>
+
+</head>
+
+<body>
+    <pre></pre>
+    <ul></ul>
+    <script>
+        const url = 'data/neolithicum.json';
+        const myRawData = document.querySelector('pre');
+
+        fetch(url)
+            .then(response => response.text())
+            .then(text => myRawData.innerText = text);
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+        const myList = document.querySelector('ul');
+        const myRequest = new Request(url);
+
+        fetch(myRequest)
+            .then(response => response.json())
+            .then(data => {
+                for (const article of data.curiosity) {
+                    let listItem = document.createElement('li');
+                    listItem.appendChild(
+                        document.createElement('strong')
+                    ).textContent = article.name;
+                    listItem.append(
+                        ` staat in ${
+                        article.city
+                        }. Coördinaten: `
+                    );
+                    listItem.appendChild(
+                        document.createElement('strong')
+                    ).textContent = `${article.coordinates}`;
+                    myList.appendChild(listItem);
+                }
+            });
+    </script>
+</body>
+
+</html>
