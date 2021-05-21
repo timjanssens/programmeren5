@@ -10,6 +10,15 @@ namespace MmtApi.Models
         public int Id { get; set; }
         public string Key { get; set; }
         public string Name { get; set; }
-        public string Text { get; set; }
+        public string Comment { get; set; }
+
+        public MmtComment() { }
+        public MmtComment(string key)
+        {
+            this.Id = 0;
+            this.Key = key;
+            this.Name = "niet van toepassing";
+            this.Comment = "";
+        }
     }
 }

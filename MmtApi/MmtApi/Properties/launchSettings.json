@@ -12,7 +12,8 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "mmtLike",
+      //"launchUrl": "mmtLike",
+      "launchUrl": "mmt",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +21,8 @@
     "MmtApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "mmtLike",
+      //"launchUrl": "mmtLike",
+      "launchUrl": "mmtComment",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

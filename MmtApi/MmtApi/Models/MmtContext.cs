@@ -15,6 +15,6 @@ namespace MmtApi.Models
 
         public DbSet<MmtLike> MmtLikes { get; set; }
         public DbSet<MmtComment> MmtComments { get; set; }
-
+        public IEnumerable<object> MmtComment { get; internal set; }
     }
 }

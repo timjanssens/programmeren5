@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voorbeeld van hoe je fetch post gebruikt</title>
+    <script src="js/helpers.js"></script>
+    <script>
+        let item = {
+            Key: "120",
+            Name: "Een",
+            Likes: 1
+        };
+        postData('http://localhost:58013/MmtLike', item)
+            .then(data => {
+                console.log(data); // JSON data parsed by `response.json()` call
+            });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
