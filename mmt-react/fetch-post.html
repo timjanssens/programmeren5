@@ -8,14 +8,49 @@
     <script src="js/helpers.js"></script>
     <script>
         let item = {
-            Key: "120",
+            Key: "122",
             Name: "Een",
-            Likes: 1
+            // Likes: 1
+            Comment: "niet"
         };
-        postData('http://localhost:58013/MmtLike', item)
-            .then(data => {
-                console.log(data); // JSON data parsed by `response.json()` call
-            });
+        // postData('http://localhost:58013/MmtComment', item)
+        //     .then(data => {
+        //         console.log(data); // JSON data parsed by `response.json()` call
+        //     });
+
+
+
+// api url
+const api_url = 
+      "http://localhost:58013/MmtComment/120";
+  
+// Defining async function
+async function getapi(url) {
+    
+    // Storing response
+    const response = await fetch(url);
+    
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log(data);
+
+    data.forEach(function (item) {
+  console.log(item.comment);
+});
+
+
+    data = data.map(function(value) {
+        return value.comment;
+    }).join((', '))
+    console.log(data);
+
+}
+// Calling that async function
+getapi(api_url);
+  
+
+
+
     </script>
 </head>
 

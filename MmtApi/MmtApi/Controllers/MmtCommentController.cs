@@ -46,12 +46,21 @@ namespace MmtApi.Controllers
         }
 
         [HttpGet("{key}")]
-        public MmtComment GetComment(string key)
+        public List<MmtComment> GetComment(string key)
         {
-            var mmtComment = mmtContext.MmtComments.Where(a => a.Key == key).FirstOrDefault();
+            //var mmtComment = mmtContext.MmtComments.Where(a => a.Key == key).FirstOrDefault();
 
-            mmtComment = mmtComment == null ? new MmtComment(key) : mmtComment;
-            return mmtComment;
+
+            //mmtComment = mmtComment == null ? new MmtComment(key) : mmtComment;
+
+            List<MmtComment> mmtComments = new List<MmtComment>();
+
+            foreach (var item in mmtContext.MmtComments)
+            {
+                mmtComments.Add(item);
+            }
+
+            return mmtComments;
 
         }
     }

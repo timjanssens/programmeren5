@@ -28,7 +28,6 @@ function AButton(props) {
         fontSize: "1em",
         fontWeight: "bold",
         padding: "6px 24px",
-        margin: "5px 0",
         textShadow: "0px 1px 0px #1570cd"
     }
 
@@ -106,129 +105,21 @@ class LikePanel extends React.Component {
     incrementLike = () => {
         const keyValue = this.props.keyValue;
         if (typeof keyValue !== 'undefined') {
-             this.postLikes();
+            this.postLikes();
         } else {
             let newCount = this.state.likes + 1;
             this.setState({
                 likes: newCount
             });
         }
-        
+
     };
-    
+
     render() {
         return (
             <div>
-                <AButton caption="like" onClick={this.incrementLike} />
+                <AButton caption="I like" onClick={this.incrementLike} />
                 <ALabel caption={this.state.likes} />
             </div>);
     }
 }
-
-
-function InField(props) {
-
-    const style = {
-        
-        padding: "5px 5px",
-        margin: "5px 0",
-        width: "250px",
-        height: "100px",
-        display: "block"
-    }
-
-    return (<textarea style={style}></textarea>);
-}
-
-
-class CommentPanel extends React.Component {
-
-    host = "http://localhost:58013/MmtComment";
-
-    constructor(props) {
-        super(props); // Now 'this' is initialized by calling the parent constructor.
-        this.state = {
-           value:''};
-           this.handleChange = this.handleChange.bind(this);
-           this.handleSubmit = this.handleSubmit.bind(this);   
-      
-    }
-
-    getLikes = () => {
-        const keyValue = this.props.keyValue;
-        let count = 0;
-        if (typeof keyValue !== 'undefined') {
-            // als de callback wordt uitgevoerd, is this niet meer in de scope
-            // daarom slaan we die op in een constante en geven die met de callback mee 
-            // const self = this;
-            const url = `${this.host}/${keyValue}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    this.setState({
-                        likes: data.likes
-                    });
-                });
-        }
-    }
-
-    postComments = () => {
-        let item = {
-            Key: this.props.keyValue,
-            Name: 'onbelangrijk',
-            Comment: this.state.value
-        };
-        postData(this.host, item)
-            .then(data => {
-                this.setState({
-                    comment: data.comment
-                });
-            });
-    }
-
-    addComment = () => {
-        const keyValue = this.props.keyValue;
-        if (typeof keyValue !== 'undefined') {
-            this.postComments();
-        } else {
-            // let newCount = this.state.likes + 1;
-            // this.setState({
-            //     likes: newCount
-            // });
-        }
-
-    };
-
-      handleChange(event) {    this.setState({value: event.target.value});  }
-     handleSubmit(e) {
-        const keyValue = this.props.keyValue;
-        if (typeof keyValue !== 'undefined') {
-            e.preventDefault();
-            this.postComments();
-            this.setState({
-                value:''
-            })
-        } else {
-            // let newCount = this.state.likes + 1;
-            // this.setState({
-            //     likes: newCount
-            // });
-        }
-    // alert('A name was submitted: ' + this.state.value);
-    // event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-            <input type="text"  id="commentBox"  value={this.state.value} onChange={this.handleChange} />
-        </label>
-         <AButton type="submit" caption="commentaar" />
-      </form>
-    );
-  }
-
-}
-
-
