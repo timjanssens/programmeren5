@@ -1,0 +1,23 @@
+Programmeren 4 Fric Frac plain php
+ga naar 
+	D:\programmeren4\public_html\threepenny-fric-frac\public
+start server 
+	php -S localhost:63346 local.php
+
+
+
+Programmeren 4 Fric Frac Laravael
+ga naar 
+	D:\programmeren4\public_html\fric-frac-laravel
+start server 
+	php artisan serve --port=63344
+	
+Programmeren 5
+start web api visual studio code (firefox bij ISS)
+
+ga naar 
+d/programmeren5/mmt-react
+start server
+php -S localhost:63343
+open ander browser
+http://localhost:63343/index.html

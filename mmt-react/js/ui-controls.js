@@ -126,20 +126,6 @@ class LikePanel extends React.Component {
 }
 
 
-function InField(props) {
-
-    const style = {
-        
-        padding: "5px 5px",
-        margin: "5px 0",
-        width: "250px",
-        height: "100px",
-        display: "block"
-    }
-
-    return (<textarea style={style}></textarea>);
-}
-
 
 class CommentPanel extends React.Component {
 
@@ -149,14 +135,16 @@ class CommentPanel extends React.Component {
         super(props); // Now 'this' is initialized by calling the parent constructor.
         this.state = {
            value:''};
+           this.getComments();
            this.handleChange = this.handleChange.bind(this);
-           this.handleSubmit = this.handleSubmit.bind(this);   
+           this.addComment = this.addComment.bind(this);   
       
     }
 
-    getLikes = () => {
+    getComments = () => {
         const keyValue = this.props.keyValue;
         let count = 0;
+        var commentIn = [];
         if (typeof keyValue !== 'undefined') {
             // als de callback wordt uitgevoerd, is this niet meer in de scope
             // daarom slaan we die op in een constante en geven die met de callback mee 
@@ -165,9 +153,24 @@ class CommentPanel extends React.Component {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
+              //      console.log(data);
+                    for(var i = 0; i < data.length; i++) {
+                        var obj = data[i];
+                    if(obj.key == keyValue){
+                        // console.log(obj.comment);
+                        commentIn.push(obj.comment);
+                    }
+                    }
+                    
+                    for(let i = 0; i < commentIn.length; i++){
+                        console.log("comment")
+                        console.log(commentIn[i]);
+                      }
+
                     this.setState({
-                        likes: data.likes
+                        comments: commentIn
                     });
+                    
                 });
         }
     }
@@ -179,56 +182,58 @@ class CommentPanel extends React.Component {
             Comment: this.state.value
         };
         postData(this.host, item)
-            .then(data => {
-                this.setState({
-                    comment: data.comment
-                });
+        .then(data => {
+            this.setState({
+                comment: data.comment
             });
+        });
+        this.getComments();
     }
 
-    addComment = () => {
-        const keyValue = this.props.keyValue;
-        if (typeof keyValue !== 'undefined') {
-            this.postComments();
-        } else {
-            // let newCount = this.state.likes + 1;
-            // this.setState({
-            //     likes: newCount
-            // });
-        }
 
-    };
 
-      handleChange(event) {    this.setState({value: event.target.value});  }
-     handleSubmit(e) {
-        const keyValue = this.props.keyValue;
-        if (typeof keyValue !== 'undefined') {
-            e.preventDefault();
-            this.postComments();
-            this.setState({
-                value:''
-            })
-        } else {
-            // let newCount = this.state.likes + 1;
-            // this.setState({
-            //     likes: newCount
-            // });
-        }
-    // alert('A name was submitted: ' + this.state.value);
-    // event.preventDefault();
-  }
+addComment = (e) => {
+    const keyValue = this.props.keyValue;
+    if (typeof keyValue !== 'undefined') {
+        e.preventDefault();
+        this.postComments();
+        this.setState({
+            value:''
+        })
+    } 
+};
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-            <input type="text"  id="commentBox"  value={this.state.value} onChange={this.handleChange} />
-        </label>
-         <AButton type="submit" caption="commentaar" />
-      </form>
-    );
-  }
+handleChange(e) { this.setState({value: e.target.value});  }
 
+
+render() {
+    
+    const style = {
+        
+        padding: "5px 5px",
+        margin: "5px 0",
+        width: "500px",
+        height: "50px",
+        display: "block"
+    }
+
+return (
+     <div>
+    <form onSubmit={this.addComment} >
+    <label>
+        <input type="textarea" style={style} id="commentBox" value={this.state.value} onChange={this.handleChange} />      
+     </label>
+     <AButton type="submit" caption="commentaar" />
+  </form>
+    <ul>
+        {this.state.comments}
+        
+        {/* {this.state.comments.map(item => {
+          return <li>{item[0]}</li>;
+        })}  */}
+    </ul>
+  </div>
+);
 }
 
-
+}
