@@ -162,10 +162,10 @@ class CommentPanel extends React.Component {
                     }
                     }
                     
-                    for(let i = 0; i < commentIn.length; i++){
-                        console.log("comment")
-                        console.log(commentIn[i]);
-                      }
+                    // for(let i = 0; i < commentIn.length; i++){
+                    //     console.log("comment")
+                    //     console.log(commentIn[i]);
+                    //   }
 
                     this.setState({
                         comments: commentIn
@@ -217,13 +217,15 @@ render() {
         display: "block"
     }
 
-    var number = this.state.comments;
+    const number = this.state.comments;
     // console.log("test")
 
-    // console.log(com)
-//     const listItems = com.map((com) =>
-//   <li>{com}</li>
-// );
+    console.log("test")
+    console.log(number)
+    const numbers = [1, 2, 3, 4, 5];
+    
+    const listItems = numbers.map((com) => <li>{com}</li>
+);
 
 return (
      <div>
@@ -234,26 +236,34 @@ return (
         <AButton type="submit" caption="commentaar" />
         </form>
         <ul>
-            <li>  
+           <li>  
             {this.state.comments}
             </li> 
-            {/* {List} */}
-        </ul>  
-        {/* <CommentList/> */}
+            {listItems}
+            <li>
+                {number}
+            </li>
+         </ul>  
+        <CommentList/>
     </div>
 );
 }
 
 }
 
-function CommentList(props) {
-    const comments = this.state.comments;
-    const listItems = comments.map((comment) =>
-      <li>{comment}</li>
-    );
-    return (
-      <ul>
-        {listItems}
-      </ul>
-    );
+
+function CommentList() {
+    // const comments = this.state.comments;
+    // const listItems = comments.map((comment) =>
+    //   <li>{comment}</li>
+    // );
+    // return (
+    //   <ul>
+    //     {listItems}
+    //   </ul>
+    // );
+    return(       
+           <li>  
+        test
+        </li>)
   }
