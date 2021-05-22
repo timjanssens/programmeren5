@@ -217,23 +217,43 @@ render() {
         display: "block"
     }
 
+    var number = this.state.comments;
+    // console.log("test")
+
+    // console.log(com)
+//     const listItems = com.map((com) =>
+//   <li>{com}</li>
+// );
+
 return (
      <div>
-    <form onSubmit={this.addComment} >
-    <label>
-        <input type="textarea" style={style} id="commentBox" value={this.state.value} onChange={this.handleChange} />      
-     </label>
-     <AButton type="submit" caption="commentaar" />
-  </form>
-    <ul>
-        {this.state.comments}
-        
-        {/* {this.state.comments.map(item => {
-          return <li>{item[0]}</li>;
-        })}  */}
-    </ul>
-  </div>
+        <form onSubmit={this.addComment} >
+        <label>
+            <input type="textarea" style={style} id="commentBox" value={this.state.value} onChange={this.handleChange} />      
+        </label>
+        <AButton type="submit" caption="commentaar" />
+        </form>
+        <ul>
+            <li>  
+            {this.state.comments}
+            </li> 
+            {/* {List} */}
+        </ul>  
+        {/* <CommentList/> */}
+    </div>
 );
 }
 
 }
+
+function CommentList(props) {
+    const comments = this.state.comments;
+    const listItems = comments.map((comment) =>
+      <li>{comment}</li>
+    );
+    return (
+      <ul>
+        {listItems}
+      </ul>
+    );
+  }
