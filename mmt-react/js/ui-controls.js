@@ -134,11 +134,11 @@ class CommentPanel extends React.Component {
     constructor(props) {
         super(props); // Now 'this' is initialized by calling the parent constructor.
         this.state = {
-           value:''};
-           this.getComments();
+           value: ''};
+           this.getComments = this.getComments.bind(this);
            this.handleChange = this.handleChange.bind(this);
            this.addComment = this.addComment.bind(this);   
-      
+           this.getComments();
     }
 
     getComments = () => {
@@ -161,12 +161,6 @@ class CommentPanel extends React.Component {
                         commentIn.push(obj.comment);
                     }
                     }
-                    
-                    // for(let i = 0; i < commentIn.length; i++){
-                    //     console.log("comment")
-                    //     console.log(commentIn[i]);
-                    //   }
-
                     this.setState({
                         comments: commentIn
                     });
@@ -183,11 +177,9 @@ class CommentPanel extends React.Component {
         };
         postData(this.host, item)
         .then(data => {
-            this.setState({
-                comment: data.comment
-            });
+            this.getComments();
         });
-        this.getComments();
+
     }
 
 
@@ -217,16 +209,9 @@ render() {
         display: "block"
     }
 
-    const number = this.state.comments;
-    // console.log("test")
+    const commentaar = this.state.comments;
 
-    console.log("test")
-    console.log(number)
-    const numbers = [1, 2, 3, 4, 5];
     
-    const listItems = numbers.map((com) => <li>{com}</li>
-);
-
 return (
      <div>
         <form onSubmit={this.addComment} >
@@ -235,16 +220,7 @@ return (
         </label>
         <AButton type="submit" caption="commentaar" />
         </form>
-        <ul>
-           <li>  
-            {this.state.comments}
-            </li> 
-            {listItems}
-            <li>
-                {number}
-            </li>
-         </ul>  
-        <CommentList/>
+        <CommentList  list={commentaar}/>
     </div>
 );
 }
@@ -252,18 +228,18 @@ return (
 }
 
 
-function CommentList() {
-    // const comments = this.state.comments;
-    // const listItems = comments.map((comment) =>
-    //   <li>{comment}</li>
-    // );
-    // return (
-    //   <ul>
-    //     {listItems}
-    //   </ul>
-    // );
-    return(       
-           <li>  
-        test
-        </li>)
-  }
+function CommentList(props) {
+    const comments = props.list;
+    var listItems;
+    if(props.list != undefined){
+         listItems = comments.map((comment, i) =>
+      <li key={i}>{comment}</li>
+    );
+}
+    return (
+      <ul>
+        {listItems}
+      </ul>
+    );
+
+    }
