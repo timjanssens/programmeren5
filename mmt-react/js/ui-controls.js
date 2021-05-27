@@ -215,11 +215,11 @@ render() {
 return (
      <div>
         <form onSubmit={this.addComment} >
-        <label>
-            <input type="textarea" style={style} id="commentBox" value={this.state.value} onChange={this.handleChange} />      
-        </label>
-        <AButton type="submit" caption="commentaar" />
+        <Heading text="Opmerkingen" type="h2" />
+        <input type="textarea" style={style} id="commentBox" value={this.state.value} onChange={this.handleChange} />      
+        <AButton type="submit" caption="Toevoegen" />
         </form>
+        <Heading text="Eerdere opmerkingen" type="h3" />
         <CommentList  list={commentaar}/>
     </div>
 );
@@ -227,6 +227,12 @@ return (
 
 }
 
+
+function Heading(props){
+    return(
+        <props.type>{props.text}</props.type>
+    )
+}
 
 function CommentList(props) {
     const comments = props.list;
@@ -241,5 +247,4 @@ function CommentList(props) {
         {listItems}
       </ul>
     );
-
-    }
+}

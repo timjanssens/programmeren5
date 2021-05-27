@@ -132,10 +132,7 @@ class ArticleDetail extends React.Component {
                 </div>
             </div>
             <div style={this.style.like}>
-             {/* <textarea style={this.style.comment}></textarea>
-             <AButton caption="Verzenden" /> */}
                     <CommentPanel keyValue={this.props.article.key}/>
-
             </div>
         </article>);
     }
